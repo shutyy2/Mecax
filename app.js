@@ -8,11 +8,13 @@ const ELEC_ACCENT = "#4FB6BE";
 const state = {
   carId: CARS[0].id,
   system: "mecanica", // 'mecanica' | 'electronica'
-  view: "ficha", // 'ficha' | 'armado' | 'diagnostico'
+  view: "ficha", // 'ficha' | 'armado' | 'diagnostico' | 'diagramas'
   openInfoKey: null,
 
   assembly: null, // se inicializa con initAssembly()
   diagnostic: null, // se inicializa con initDiagnostic()
+  diagramType: null, // se inicializa en renderDiagramas()
+  diagramSelectedComponent: null,
 };
 
 function currentCar() {
@@ -52,6 +54,7 @@ function renderCarSelector() {
       state.carId = btn.dataset.carId;
       state.openInfoKey = null;
       state.diagnostic = null;
+      state.diagramSelectedComponent = null;
       renderAll();
     });
   });
@@ -90,6 +93,7 @@ function renderViewTabs() {
     { id: "ficha", label: "FICHA TÉCNICA" },
     { id: "armado", label: "ARMÁ EL MOTOR" },
     { id: "diagnostico", label: "DIAGNÓSTICO" },
+    { id: "diagramas", label: "DIAGRAMAS ELÉCTRICOS" },
   ];
   el.innerHTML = views
     .map(
@@ -424,6 +428,7 @@ function renderView() {
   if (state.view === "ficha") renderFicha();
   else if (state.view === "armado") renderArmado();
   else if (state.view === "diagnostico") renderDiagnostico();
+  else if (state.view === "diagramas") renderDiagramas();
 }
 
 function renderAll() {

@@ -734,6 +734,68 @@ html, body {
   width: 100%;
 }
 
+/* ---------- DIAGRAMAS ELÉCTRICOS ---------- */
+
+.diagram-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.diagram-tab-btn {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  padding: 8px 14px;
+  border-radius: 2px;
+  border: 1px solid var(--border);
+  background: transparent;
+  cursor: pointer;
+}
+
+.diagram-box {
+  border: 1px solid var(--border);
+  background: var(--panel);
+  border-radius: 2px;
+  padding: 12px;
+  margin-bottom: 14px;
+  overflow-x: auto;
+}
+
+.diagram-svg {
+  width: 100%;
+  min-width: 640px;
+  height: auto;
+  display: block;
+}
+
+.diagram-component {
+  cursor: pointer;
+}
+
+.diagram-component rect {
+  transition: fill 0.15s;
+}
+
+.diagram-component:hover rect {
+  fill: rgba(79, 182, 190, 0.14);
+}
+
+.diagram-info-box {
+  border: 1px solid var(--border);
+  border-left-width: 4px;
+  background: var(--panel);
+  border-radius: 2px;
+  padding: 16px;
+}
+
+.diagram-info-box p {
+  margin: 6px 0 0 0;
+  font-size: 0.88rem;
+  color: rgba(242,237,228,0.85);
+  line-height: 1.6;
+}
+
 /* ---------- FOOTER ---------- */
 
 .footer {
