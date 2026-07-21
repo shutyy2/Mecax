@@ -263,8 +263,12 @@ function renderArmado() {
    MINIJUEGO: DIAGNÓSTICO DE TALLER
 --------------------------------------------------------- */
 
-function shuffleSteps(failure) {
-  return shuffle([...failure.correctSteps, ...failure.distractors]);
+function buildDiagnosticOptions(failure) {
+  const combined = [
+    ...failure.steps.map((s) => ({ text: s.text, reason: s.reason, kind: "step" })),
+    ...failure.distractors.map((d) => ({ text: d.text, reason: d.reason, kind: "distractor" })),
+  ];
+  return shuffle(combined);
 }
 
 function initDiagnostic() {
@@ -273,9 +277,10 @@ function initDiagnostic() {
   state.diagnostic = {
     carId: car.id,
     failure,
-    candidates: shuffleSteps(failure),
-    chosen: [],
-    result: null,
+    options: buildDiagnosticOptions(failure),
+    chosen: [], // array de { text, reason }
+    message: null,
+    mistakes: 0,
   };
 }
 
@@ -285,46 +290,40 @@ function selectFailure(failureId) {
   state.diagnostic = {
     carId: car.id,
     failure,
-    candidates: shuffleSteps(failure),
+    options: buildDiagnosticOptions(failure),
     chosen: [],
-    result: null,
+    message: null,
+    mistakes: 0,
   };
   renderDiagnostico();
 }
 
-function addDiagnosticStep(step) {
+function attemptDiagnosticStep(optionText) {
   const d = state.diagnostic;
-  d.chosen.push(step);
-  d.candidates = d.candidates.filter((c) => c !== step);
-  d.result = null;
-  renderDiagnostico();
-}
+  const failure = d.failure;
+  const nextIndex = d.chosen.length;
+  const expectedStep = failure.steps[nextIndex];
+  const option = d.options.find((o) => o.text === optionText);
 
-function removeDiagnosticStep(index) {
-  const d = state.diagnostic;
-  const step = d.chosen[index];
-  d.chosen = d.chosen.filter((_, i) => i !== index);
-  d.candidates.push(step);
-  d.result = null;
-  renderDiagnostico();
-}
-
-function checkDiagnostic() {
-  const d = state.diagnostic;
-  const correct = d.failure.correctSteps;
-  const chosenCorrectOnly = d.chosen.filter((s) => correct.includes(s));
-  const hasWrong = d.chosen.some((s) => !correct.includes(s));
-  const rightOrder = correct.every((s, i) => chosenCorrectOnly[i] === s);
-  const complete = chosenCorrectOnly.length === correct.length;
-
-  if (complete && rightOrder && !hasWrong) {
-    d.result = { ok: true, text: "Diagnóstico resuelto: reparación completa y en el orden lógico de un taller." };
-  } else if (hasWrong) {
-    d.result = { ok: false, text: "Incluiste un paso que no corresponde a esta falla. Sacalo de la lista e intentá de nuevo." };
-  } else if (!rightOrder) {
-    d.result = { ok: false, text: "El orden no es el más eficiente para diagnosticar esta falla. Pensá qué se revisa primero." };
+  if (option.text === expectedStep.text) {
+    d.chosen.push({ text: expectedStep.text, reason: expectedStep.reason });
+    d.options = d.options.filter((o) => o.text !== optionText);
+    const isDone = d.chosen.length === failure.steps.length;
+    d.message = {
+      ok: true,
+      text: isDone
+        ? `Correcto: ${expectedStep.reason} Con esto, el diagnóstico queda completo.`
+        : `Correcto: ${expectedStep.reason}`,
+    };
+  } else if (option.kind === "step") {
+    d.mistakes += 1;
+    d.message = {
+      ok: false,
+      text: `Ese paso es válido para esta falla, pero todavía no es el que sigue. Pensá qué conviene descartar primero.`,
+    };
   } else {
-    d.result = { ok: false, text: "Todavía falta algún paso para completar el diagnóstico." };
+    d.mistakes += 1;
+    d.message = { ok: false, text: option.reason };
   }
   renderDiagnostico();
 }
@@ -334,11 +333,13 @@ function renderDiagnostico() {
   if (!state.diagnostic || state.diagnostic.carId !== car.id) initDiagnostic();
   const d = state.diagnostic;
   const accent = accentColor();
+  const failure = d.failure;
+  const isDone = d.chosen.length === failure.steps.length;
 
   const container = document.getElementById("view-container");
   container.innerHTML = `
     <h3 class="game-title">DIAGNÓSTICO DE TALLER</h3>
-    <p class="game-desc">Elegí una falla común, armá la secuencia de revisión y confirmá. Podés sacar pasos y volver a intentar las veces que quieras.</p>
+    <p class="game-desc">Elegí una falla común y armá la secuencia de revisión, paso por paso. Cada vez que acertás un paso te explicamos por qué va ahí; si te equivocás, te explicamos por qué esa opción no corresponde todavía. Podés intentar las veces que quieras.</p>
 
     <div class="failure-picker">
       ${car.failures
@@ -356,32 +357,40 @@ function renderDiagnostico() {
       <span class="sym-icon" style="color:${accent}">⚠️</span>
       <div>
         <div class="box-label">SÍNTOMA REPORTADO</div>
-        <p>${d.failure.symptom}</p>
+        <p>${failure.symptom}</p>
       </div>
     </div>
+
+    ${
+      d.message
+        ? `<div class="msg-box ${d.message.ok ? "ok" : "err"}" style="${d.message.ok ? `color:${accent}; border-color:${accent}; background:${accent}14;` : ""}">
+            ${d.message.ok ? "✅" : "⚠️"} ${d.message.text}
+          </div>`
+        : ""
+    }
 
     <div class="game-columns">
       <div class="game-box">
         <div class="box-label">POSIBLES REVISIONES</div>
-        <div class="chip-list" id="diag-candidates" style="flex-direction:column; align-items:stretch;">
+        <div class="chip-list" id="diag-options" style="flex-direction:column; align-items:stretch;">
           ${
-            d.candidates.length === 0
-              ? `<span class="empty-note">No hay más opciones disponibles.</span>`
-              : d.candidates.map((c) => `<button class="chip-btn" data-step="${encodeURIComponent(c)}">${c}</button>`).join("")
+            isDone
+              ? `<span class="empty-note">Diagnóstico completo, no hace falta seguir revisando.</span>`
+              : d.options.map((o) => `<button class="chip-btn" data-step="${encodeURIComponent(o.text)}">${o.text}</button>`).join("")
           }
         </div>
       </div>
 
       <div class="game-box">
-        <div class="box-label">ORDEN DE TRABAJO</div>
-        ${d.chosen.length === 0 ? `<span class="empty-note">Todavía no agregaste pasos.</span>` : ""}
-        <ol class="seq-list">
+        <div class="box-label">ORDEN DE TRABAJO (${d.chosen.length}/${failure.steps.length})</div>
+        ${d.chosen.length === 0 ? `<span class="empty-note">Todavía no confirmaste ningún paso.</span>` : ""}
+        <ol class="seq-list diag-order-list">
           ${d.chosen
             .map(
               (c, i) => `
-            <li class="step-row" style="background:${accent}14">
-              <span><span class="seq-num" style="color:${accent}">${String(i + 1).padStart(2, "0")}</span> ${c}</span>
-              <button class="remove-btn" data-remove-index="${i}">✕</button>
+            <li class="step-row-explained" style="background:${accent}14; border-left:3px solid ${accent}">
+              <div class="step-row-text"><span class="seq-num" style="color:${accent}">${String(i + 1).padStart(2, "0")}</span> <strong>${c.text}</strong></div>
+              <p class="step-reason">${c.reason}</p>
             </li>
           `
             )
@@ -390,31 +399,18 @@ function renderDiagnostico() {
       </div>
     </div>
 
-    ${
-      d.result
-        ? `<div class="msg-box ${d.result.ok ? "ok" : "err"}" style="${d.result.ok ? `color:${accent}; border-color:${accent}; background:${accent}14;` : ""}">
-            ${d.result.ok ? "✅" : "⚠️"} ${d.result.text}
-          </div>`
-        : ""
-    }
-
     <div class="actions-row">
-      <button class="btn-solid" id="diag-check" ${d.chosen.length === 0 ? "disabled" : ""} style="background:${accent}">CONFIRMAR DIAGNÓSTICO</button>
-      <button class="btn-ghost" id="diag-reset">↺ Reiniciar</button>
+      <button class="btn-ghost" id="diag-reset">↺ Reiniciar esta falla</button>
+      ${d.mistakes > 0 ? `<span class="hint-note">Intentos fallidos: ${d.mistakes}</span>` : ""}
     </div>
   `;
 
   container.querySelectorAll("[data-step]").forEach((btn) => {
-    btn.addEventListener("click", () => addDiagnosticStep(decodeURIComponent(btn.dataset.step)));
-  });
-  container.querySelectorAll("[data-remove-index]").forEach((btn) => {
-    btn.addEventListener("click", () => removeDiagnosticStep(Number(btn.dataset.removeIndex)));
+    btn.addEventListener("click", () => attemptDiagnosticStep(decodeURIComponent(btn.dataset.step)));
   });
   container.querySelectorAll("[data-failure-id]").forEach((btn) => {
     btn.addEventListener("click", () => selectFailure(btn.dataset.failureId));
   });
-  const checkBtn = document.getElementById("diag-check");
-  if (checkBtn) checkBtn.addEventListener("click", checkDiagnostic);
   document.getElementById("diag-reset").addEventListener("click", () => {
     selectFailure(d.failure.id);
   });

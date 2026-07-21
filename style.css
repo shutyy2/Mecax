@@ -476,6 +476,29 @@ html, body {
 
 .step-row .remove-btn:hover { color: rgba(242,237,228,0.9); }
 
+.diag-order-list {
+  gap: 10px;
+}
+
+.step-row-explained {
+  padding: 10px 12px;
+  border-radius: 2px;
+}
+
+.step-row-text {
+  font-size: 0.85rem;
+  color: rgba(242,237,228,0.95);
+  margin-bottom: 4px;
+}
+
+.step-reason {
+  margin: 0;
+  padding-left: 22px;
+  font-size: 0.78rem;
+  color: rgba(242,237,228,0.6);
+  line-height: 1.5;
+}
+
 /* ---------- NAV ---------- */
 
 .topnav {
