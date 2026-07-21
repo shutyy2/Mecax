@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Diagnóstico Inteligente · Mecax</title>
+<meta name="description" content="Elegí un síntoma y seguí el árbol de diagnóstico para encontrar las causas más probables, como lo pensaría un mecánico." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <nav class="topnav wrap">
+    <a href="index.html" class="brand">MECA<span style="color:var(--mech)">X</span></a>
+    <div class="nav-links">
+      <a href="index.html">Fichas técnicas</a>
+      <a href="diagnostico-inteligente.html" class="active">Diagnóstico inteligente</a>
+    </div>
+  </nav>
+
+  <header class="hero grid-bg diag-hero">
+    <div class="wrap">
+      <div class="eyebrow"><span class="ico">🧠</span> DIAGNÓSTICO INTELIGENTE</div>
+      <h1 class="title">
+        DECINOS QUÉ<br />
+        <span style="color:var(--mech)">HACE</span> EL AUTO
+      </h1>
+      <p class="subtitle">
+        Un árbol de decisiones guiado por síntomas, pensado como una primera orientación antes de meter mano o llevarlo al taller. No reemplaza el diagnóstico presencial, pero te acerca a las causas más probables.
+      </p>
+    </div>
+  </header>
+
+  <main class="wrap main">
+    <div id="diag-app"></div>
+  </main>
+
+  <footer class="footer">
+    <p>Contenido de referencia con fines educativos · Ante dudas o síntomas graves, consultá a un mecánico matriculado</p>
+  </footer>
+
+  <script src="diag-data.js"></script>
+  <script src="diag-app.js"></script>
+</body>
+</html>
