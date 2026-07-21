@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Manual de Taller · Autos en Argentina</title>
+<meta name="description" content="Fichas técnicas de mecánica y electrónica de los autos más elegidos en Argentina, con minijuegos de armado de motor y diagnóstico de fallas." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="hero grid-bg">
+    <div class="wrap">
+      <div class="eyebrow"><span class="ico" style="color:var(--mech)">🔧</span> MANUAL DE TALLER · MERCADO ARGENTINO</div>
+      <h1 class="title">
+        CONOCÉ TU AUTO<br />
+        <span style="color:var(--mech)">PIEZA</span> POR <span style="color:var(--elec)">PIEZA</span>
+      </h1>
+      <p class="subtitle">
+        Fichas técnicas de mecánica y electrónica para los modelos más elegidos en Argentina, con un banco de armado
+        de motor y un simulador de diagnóstico de fallas comunes para practicar sin miedo a equivocarte.
+      </p>
+    </div>
+  </header>
+
+  <main class="wrap main">
+
+    <section>
+      <div class="label">ELEGÍ UN MODELO</div>
+      <div id="car-selector" class="car-selector"></div>
+    </section>
+
+    <section class="panel-section">
+      <div class="controls-row">
+        <div id="system-tabs" class="system-tabs"></div>
+        <div id="view-tabs" class="view-tabs"></div>
+      </div>
+      <div id="view-container"></div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>Contenido de referencia con fines educativos · Consultá siempre el manual oficial de tu vehículo antes de intervenir</p>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
