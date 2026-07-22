@@ -60,6 +60,19 @@ No hace falta instalar nada ni compilar: al ser HTML/CSS/JS puro, funciona direc
 
 Los diagramas incluidos son esquemas propios, simplificados y con fines educativos, construidos a partir de los datos técnicos ya cargados en el sitio (no son escaneos ni copias de manuales de fábrica, que están protegidos por derechos de autor). Sirven para entender cómo se conecta cada sistema, pero no reemplazan el diagrama oficial del fabricante para una reparación real.
 
+## Auditoría de datos (julio 2026)
+
+Los datos de motor de los 6 autos fueron verificados contra fuentes públicas (fichas técnicas oficiales de las terminales en Argentina y prensa especializada del sector). Se corrigieron 5 de 6 fichas, que tenían errores o estaban desactualizadas:
+
+- **Fiat Cronos**: rpm de potencia máxima corregidas (6.000, no 6.250), corregido a 4 cilindros (no 3), corregido de doble árbol de levas a árbol único, agregado torque real.
+- **Chevrolet Onix**: eliminada la versión atmosférica (discontinuada en Argentina desde julio 2024); la gama actual es 100% turbo 1.0.
+- **Peugeot 208**: corrección mayor — la ficha tenía el motor europeo (PureTech 1.2 turbo, 130 CV), cuando la gama real en Argentina usa un 1.6 atmosférico (versiones base) o un 1.0 Turbo T200 (versiones tope), cada uno con su propia caja. También se corrigió que el faro Full LED es exclusivo de la versión GT, no de toda la gama.
+- **Toyota Hilux**: corregida la distribución a cadena (no correa) para toda la familia de motores GD.
+- **Ford Ka**: corregida la potencia a la cifra real de la generación 2018+ (123 CV, no un rango genérico), agregado el dato de que la correa de distribución trabaja en baño de aceite (dato relevante de mantenimiento: intervalo oficial de 160.000 km, aunque hay reportes de fallas mucho antes en uso real).
+- **VW Gol Trend**: se confirmó correcta (101 CV a 5.250 rpm).
+
+Estos datos son de referencia general — no reemplazan la ficha técnica oficial de la versión/año específico de cada unidad, que puede variar. Para pares de apriete, tolerancias y diagramas de pines exactos, la fuente correcta es siempre el manual de taller oficial del fabricante (documentos protegidos y no reproducibles acá).
+
 ## Próximos pasos sugeridos
 
 Según lo conversado, las siguientes secciones quedan pendientes para futuras iteraciones: Inyección electrónica, Turbo, Transmisión, Suspensión, Frenos (ABS/ESP), Dirección, Sistema de carga/arranque como sección propia, Herramientas, y los extras (calculadora de torque, tabla de fusibles, tabla de códigos OBD2, comparador de sensores, simulador de circuitos, glosario, mantenimiento por kilometraje).

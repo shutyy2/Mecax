@@ -130,8 +130,8 @@ const CARS = [
     mechanical: {
       motor: {
         title: "Motor", icon: "motor",
-        desc: "Motor Firefly de tres cilindros, bloque de aluminio, con doble árbol de levas en culata.",
-        specs: { Código: "Firefly 1.3", Potencia: "99 CV a 6250 rpm", Cilindrada: "1332 cm³", Distribución: "Cadena", Combustible: "Nafta" },
+        desc: "Motor Firefly de cuatro cilindros y 8 válvulas, bloque de aluminio, con árbol de levas único y fase variable; cadena de distribución sin cambio programado ('for life').",
+        specs: { Código: "Firefly 1.3", Potencia: "99 CV a 6.000 rpm", Torque: "127 Nm (13 kgm) a 4.000 rpm", Cilindrada: "1332 cm³", "Relación de compresión": "11.1:1", Distribución: "Cadena (sin mantenimiento programado)", Combustible: "Nafta" },
       },
       transmision: {
         title: "Transmisión", icon: "settings",
@@ -224,8 +224,8 @@ const CARS = [
     mechanical: {
       motor: {
         title: "Motor", icon: "motor",
-        desc: "Motor turbo de tres cilindros con inyección directa, o naftero atmosférico de 1.0 según versión.",
-        specs: { Código: "1.0 Turbo / 1.0 Atmosférico", Potencia: "116 CV (turbo) / 82 CV (atmosférico)", Distribución: "Cadena", Combustible: "Nafta" },
+        desc: "Desde julio de 2024 toda la gama Onix en Argentina se vende únicamente con motor turbo de tres cilindros e inyección directa (antes también existía una versión 1.2 atmosférica de 90 CV, hoy discontinuada pero todavía circulando en unidades usadas).",
+        specs: { Código: "1.0 Turbo (999 cm³)", Potencia: "116 CV a 5.500 rpm", Torque: "160 Nm a 2.000 rpm", Distribución: "Cadena", Combustible: "Nafta" },
       },
       transmision: {
         title: "Transmisión", icon: "settings",
@@ -318,13 +318,13 @@ const CARS = [
     mechanical: {
       motor: {
         title: "Motor", icon: "motor",
-        desc: "Motor PureTech turbo de tres cilindros con inyección directa de alta presión.",
-        specs: { Código: "PureTech 1.2 Turbo", Potencia: "130 CV a 5500 rpm", Distribución: "Cadena", Combustible: "Nafta" },
+        desc: "La gama argentina se vende con dos motorizaciones distintas según versión: un 1.6L naftero atmosférico en las versiones de entrada, y un 1.0L turbo (T200) en las versiones tope de gama.",
+        specs: { "Motor Active/Allure": "1.6L atmosférico, 115 CV a 6.000 rpm, 150 Nm a 4.000 rpm", "Motor Allure T200/GT": "1.0L Turbo (999 cm³), 120 CV a 5.750 rpm, 200 Nm a 1.750 rpm", Combustible: "Nafta" },
       },
       transmision: {
         title: "Transmisión", icon: "settings",
-        desc: "Manual de 6 marchas o automática de 6 velocidades tipo torque converter.",
-        specs: { Tipo: "Manual 6 vel. / Automática 6 vel." },
+        desc: "El motor 1.6 atmosférico usa caja manual de 5 marchas o automática de 6; el motor 1.0 Turbo usa exclusivamente caja CVT de 7 velocidades simuladas.",
+        specs: { "Con motor 1.6": "Manual 5 vel. / Automática 6 vel.", "Con motor 1.0 Turbo": "CVT 7 vel. simuladas" },
       },
       suspension: {
         title: "Suspensión", icon: "car",
@@ -360,8 +360,8 @@ const CARS = [
       },
       iluminacion: {
         title: "Iluminación", icon: "bulb",
-        desc: "Faros full LED con firma lumínica de tres garras, característicos de la marca.",
-        specs: { Baja: "Full LED", DRL: "LED integrado" },
+        desc: "Faros halógenos en las versiones Active y Allure; solo la versión GT tope de gama trae ópticas Full LED con corrección automática de altura y firma de tres garras DRL.",
+        specs: { "Active/Allure": "Halógenos + DRL Tri-LED", GT: "Full LED con corrección automática de altura" },
       },
       climatizacion: {
         title: "Climatización", icon: "fan",
@@ -412,8 +412,8 @@ const CARS = [
     mechanical: {
       motor: {
         title: "Motor", icon: "motor",
-        desc: "Motor turbodiésel de cuatro cilindros con inyección common rail e intercooler.",
-        specs: { Código: "1GD-FTV / 2GD-FTV 2.4-2.8", Potencia: "150-204 CV", Distribución: "Correa/Cadena según versión", Combustible: "Diésel" },
+        desc: "Motor turbodiésel de cuatro cilindros con inyección common rail e intercooler; toda la familia GD usa cadena de distribución, no correa.",
+        specs: { Código: "2GD-FTV 2.4 / 1GD-FTV 2.8", Potencia: "150 CV (2.4) / 204 CV a 3.400 rpm (2.8)", Torque: "400 Nm (2.4) / 420-500 Nm según caja (2.8)", Distribución: "Cadena", Combustible: "Diésel" },
       },
       transmision: {
         title: "Transmisión", icon: "settings",
@@ -506,8 +506,8 @@ const CARS = [
     mechanical: {
       motor: {
         title: "Motor", icon: "motor",
-        desc: "Motor Ti-VCT de cuatro cilindros con distribución variable, bloque de aluminio.",
-        specs: { Código: "Ti-VCT 1.5", Potencia: "101-136 CV según versión", Distribución: "Correa dentada", Combustible: "Nafta" },
+        desc: "Desde 2018 el Ka usa el motor Dragon: tres cilindros, aspirado, bloque y tapa de aluminio, con distribución variable independiente en admisión y escape (la generación anterior, 2014-2018, usaba un 4 cilindros de 105 CV).",
+        specs: { Código: "Ti-VCT 1.5 'Dragon'", Potencia: "123 CV a 6.500 rpm", Torque: "151 Nm a 4.500 rpm", Distribución: "Correa dentada en baño de aceite", Combustible: "Nafta" },
       },
       transmision: {
         title: "Transmisión", icon: "settings",
