@@ -796,6 +796,46 @@ html, body {
   line-height: 1.6;
 }
 
+/* ---------- MOTORES: fundamentos y comparativa ---------- */
+
+.fundamentos-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.fundamento-body p {
+  margin: 0 0 10px 0;
+  font-size: 0.88rem;
+  color: rgba(242,237,228,0.85);
+  line-height: 1.6;
+}
+
+.fundamento-body p:last-child { margin-bottom: 0; }
+
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+.compare-table th,
+.compare-table td {
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.compare-table th {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--text-dimmer);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.compare-table td { color: rgba(242,237,228,0.9); }
+
 /* ---------- FOOTER ---------- */
 
 .footer {

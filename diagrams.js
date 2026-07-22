@@ -85,12 +85,10 @@ function connectionAnchor(box) {
   return { x: box.x + box.w / 2, y: box.y + box.h / 2 };
 }
 
-function renderDiagramSVG(def, accent) {
-  const w = 760;
-  const h = 320;
+function renderDiagramSVG(def, accent, w = 760, h = 320) {
   let svg = `<svg viewBox="0 0 ${w} ${h}" class="diagram-svg" xmlns="http://www.w3.org/2000/svg">`;
 
-  def.connections.forEach((conn) => {
+  (def.connections || []).forEach((conn) => {
     const from = def.components.find((c) => c.id === conn.from);
     const to = def.components.find((c) => c.id === conn.to);
     const a = connectionAnchor(from);

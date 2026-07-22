@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Motores · Mecax</title>
+<meta name="description" content="Cómo funciona un motor: ciclo Otto, ciclo Diésel, compresión, reglaje de válvulas, corte de motor interactivo, lubricación y refrigeración." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <nav class="topnav wrap">
+    <a href="index.html" class="brand">MECA<span style="color:var(--mech)">X</span></a>
+    <div class="nav-links">
+      <a href="index.html">Fichas técnicas</a>
+      <a href="motores.html" class="active">Motores</a>
+      <a href="diagnostico-inteligente.html">Diagnóstico inteligente</a>
+    </div>
+  </nav>
+
+  <header class="hero grid-bg diag-hero">
+    <div class="wrap">
+      <div class="eyebrow"><span class="ico" style="color:var(--mech)">⚙️</span> MOTORES · FUNDAMENTOS</div>
+      <h1 class="title">
+        CÓMO FUNCIONA<br />
+        <span style="color:var(--mech)">UN MOTOR</span>
+      </h1>
+      <p class="subtitle">
+        Conocimiento de base, igual para cualquier auto: ciclo Otto y Diésel, compresión, reglaje de válvulas, y un corte de motor interactivo con lubricación y refrigeración explicadas pieza por pieza.
+      </p>
+    </div>
+  </header>
+
+  <main class="wrap main">
+
+    <section>
+      <h3 class="game-title">FUNDAMENTOS</h3>
+      <p class="game-desc">Conceptos que valen para cualquier motor, sin importar la marca o el modelo.</p>
+      <div id="fundamentos-list" class="fundamentos-list"></div>
+    </section>
+
+    <section class="panel-section">
+      <h3 class="game-title">CORTE DE MOTOR INTERACTIVO</h3>
+      <p class="game-desc">Esquema de un cilindro con su tren de válvulas y su distribución. Tocá cada parte para ver qué es y qué función cumple.</p>
+      <div id="cutaway-container"></div>
+    </section>
+
+    <section class="panel-section">
+      <h3 class="game-title">CIRCUITO DE LUBRICACIÓN</h3>
+      <p class="game-desc">Cómo circula el aceite dentro del motor, desde el cárter hasta cada pieza móvil.</p>
+      <div id="oil-container"></div>
+    </section>
+
+    <section class="panel-section">
+      <h3 class="game-title">CIRCUITO DE REFRIGERACIÓN</h3>
+      <p class="game-desc">Cómo se mantiene la temperatura de trabajo del motor.</p>
+      <div id="cooling-container"></div>
+    </section>
+
+    <section class="panel-section">
+      <h3 class="game-title">CORREAS Y CADENAS: COMPARATIVA REAL POR MODELO</h3>
+      <p class="game-desc">Tipo de distribución verificado para cada uno de los 6 autos del sitio (ver auditoría en el README del proyecto).</p>
+      <div id="distribution-table"></div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>Contenido educativo de referencia · Para pares de apriete, tolerancias y procedimientos exactos, consultá siempre el manual oficial del fabricante</p>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="diagrams.js"></script>
+  <script src="motores-data.js"></script>
+  <script src="motores-app.js"></script>
+</body>
+</html>
