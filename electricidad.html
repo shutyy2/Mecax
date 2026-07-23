@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Electricidad y Electrónica · Mecax</title>
+<meta name="description" content="Ley de Ohm aplicada, masas, fusibles y relés, ECU, sensores y actuadores, CAN Bus, y cómo leer un código DTC. Con referencia verificada de voltajes típicos por tipo de sensor." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <nav class="topnav wrap">
+    <a href="index.html" class="brand">MECA<span style="color:var(--mech)">X</span></a>
+    <div class="nav-links">
+      <a href="index.html">Fichas técnicas</a>
+      <a href="motores.html">Motores</a>
+      <a href="electricidad.html" class="active">Electricidad</a>
+      <a href="diagnostico-inteligente.html">Diagnóstico inteligente</a>
+    </div>
+  </nav>
+
+  <header class="hero grid-bg diag-hero">
+    <div class="wrap">
+      <div class="eyebrow"><span class="ico" style="color:var(--elec)">⚡</span> ELECTRICIDAD + ELECTRÓNICA · FUNDAMENTOS</div>
+      <h1 class="title">
+        CÓMO SE MUEVE<br />
+        <span style="color:var(--elec)">LA CORRIENTE</span> EN EL AUTO
+      </h1>
+      <p class="subtitle">
+        Ley de Ohm aplicada al diagnóstico real, masas, fusibles y relés, cómo se relacionan la ECU con sus sensores y actuadores, CAN Bus, y cómo leer un código DTC — con rangos de voltaje verificados por tipo de sensor, no inventados.
+      </p>
+    </div>
+  </header>
+
+  <main class="wrap main">
+
+    <section>
+      <h3 class="game-title">FUNDAMENTOS</h3>
+      <p class="game-desc">Conceptos que valen para cualquier auto, sin importar la marca o el modelo.</p>
+      <div id="elec-fundamentos-list" class="fundamentos-list"></div>
+    </section>
+
+    <section class="panel-section">
+      <h3 class="game-title">CIRCUITO INTERACTIVO: LEY DE OHM</h3>
+      <p class="game-desc">Un circuito básico de batería, fusible, interruptor y carga. Tocá cada parte para ver qué se mediría ahí con un multímetro.</p>
+      <div id="ohm-container"></div>
+    </section>
+
+    <section class="panel-section">
+      <h3 class="game-title">SENSORES: QUÉ SEÑAL Y VOLTAJE ESPERAR</h3>
+      <p class="game-desc">Referencia por tipo de sensor (verificada contra fuentes públicas), no por auto específico — el pinout exacto de cada modelo depende del manual de fábrica.</p>
+      <div id="sensor-reference-list" class="fundamentos-list"></div>
+    </section>
+
+    <section class="panel-section">
+      <h3 class="game-title">CÓDIGOS DTC: ESTRUCTURA Y EJEMPLOS</h3>
+      <p class="game-desc">Un código DTC tiene 5 caracteres: letra de sistema + dígito genérico/fabricante + 3 dígitos de falla puntual. Algunos ejemplos reales:</p>
+      <div id="dtc-table"></div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>Contenido educativo de referencia · Los rangos de sensores son por tipo, no por auto — para el pinout exacto de un modelo y año específico, consultá el manual oficial del fabricante</p>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="diagrams.js"></script>
+  <script src="electricidad-data.js"></script>
+  <script src="electricidad-app.js"></script>
+</body>
+</html>
