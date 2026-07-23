@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Combustible y Admisión/Escape · Mecax</title>
+<meta name="description" content="Bomba de combustible, presión de inyección (MPFI, GDI, common rail), turbo con wastegate y geometría variable, intercooler, y sistema de emisiones EGR/catalizador/DPF." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <nav class="topnav wrap">
+    <a href="index.html" class="brand">MECA<span style="color:var(--mech)">X</span></a>
+    <div class="nav-links">
+      <a href="index.html">Fichas técnicas</a>
+      <a href="motores.html">Motores</a>
+      <a href="electricidad.html">Electricidad</a>
+      <a href="combustible.html" class="active">Combustible</a>
+      <a href="diagnostico-inteligente.html">Diagnóstico inteligente</a>
+    </div>
+  </nav>
+
+  <header class="hero grid-bg diag-hero">
+    <div class="wrap">
+      <div class="eyebrow"><span class="ico" style="color:var(--mech)">⛽</span> COMBUSTIBLE + ADMISIÓN/ESCAPE</div>
+      <h1 class="title">
+        DEL TANQUE<br />
+        <span style="color:var(--mech)">A LOS CILINDROS</span> Y DE VUELTA
+      </h1>
+      <p class="subtitle">
+        Cómo llega el combustible al motor, por qué la presión de inyección varía tanto entre sistemas, cómo funciona un turbo (wastegate vs. geometría variable), el intercooler, y el sistema de emisiones EGR/catalizador/DPF.
+      </p>
+    </div>
+  </header>
+
+  <main class="wrap main">
+
+    <section>
+      <h3 class="game-title">FUNDAMENTOS</h3>
+      <p class="game-desc">Conceptos que valen para cualquier auto, sin importar la marca o el modelo.</p>
+      <div id="fuel-fundamentos-list" class="fundamentos-list"></div>
+    </section>
+
+    <section class="panel-section">
+      <h3 class="game-title">CIRCUITO DE ALIMENTACIÓN DE COMBUSTIBLE</h3>
+      <p class="game-desc">Del tanque a los inyectores. Tocá cada parte para ver qué función cumple.</p>
+      <div id="fuel-circuit-container"></div>
+    </section>
+
+    <section class="panel-section">
+      <h3 class="game-title">ADMISIÓN, TURBO Y ESCAPE</h3>
+      <p class="game-desc">Desde el filtro de aire hasta la salida de gases, con el turbo y el sistema de emisiones en el medio.</p>
+      <div id="intake-circuit-container"></div>
+    </section>
+
+    <section class="panel-section">
+      <h3 class="game-title">SOBREALIMENTACIÓN POR MODELO</h3>
+      <p class="game-desc">Construida directo sobre los datos ya verificados de cada auto (no son números nuevos, es una lectura de lo que ya está cargado).</p>
+      <div id="fuel-table"></div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>Contenido educativo de referencia · Para presiones exactas de un sistema en particular, consultá siempre el manual oficial del fabricante</p>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="diagrams.js"></script>
+  <script src="combustible-data.js"></script>
+  <script src="combustible-app.js"></script>
+</body>
+</html>

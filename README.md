@@ -9,6 +9,7 @@ Sitio web estático (HTML + CSS + JavaScript puro, sin frameworks ni pasos de bu
 - **Diagnóstico Inteligente** (página aparte): el usuario elige un síntoma general (no arranca, pierde potencia, humo negro, etc.) y un árbol de decisiones de preguntas simples lo guía hasta las causas más probables y qué revisar, con nivel de urgencia y herramienta sugerida.
 - **Motores** (página aparte): fundamentos universales de ingeniería automotriz (ciclo Otto, ciclo Diésel, compresión, reglaje de válvulas), un corte de motor interactivo y clickeable, los circuitos de lubricación y refrigeración como diagramas de flujo, y una comparativa real de correas vs. cadenas construida directamente sobre los datos ya auditados de los 6 autos (si un dato no está verificado, la tabla lo dice en vez de inventarlo).
 - **Electricidad + Electrónica** (página aparte): Ley de Ohm aplicada al diagnóstico real, masas, fusibles y relés, ECU/sensores/actuadores, CAN Bus y estructura de códigos DTC, un circuito interactivo de Ley de Ohm, y una referencia de sensores comunes (TPS, MAP, CKP/CMP inductivo y Hall, sonda de oxígeno, ECT/IAT) con tipo de señal, cantidad de hilos y rango de voltaje verificados contra fuentes públicas — por tipo de sensor, no inventados por auto.
+- **Combustible + Admisión/Escape** (página aparte): cómo llega el combustible al motor (bomba, regulador), por qué la presión de inyección varía tanto entre MPFI/GDI/common rail, turbo con wastegate vs. geometría variable, intercooler, y sistema de emisiones (EGR, catalizador, DPF/FAP con regeneración pasiva y activa). Incluye dos circuitos interactivos (alimentación, y admisión/turbo/escape) y una tabla de sobrealimentación por modelo que se lee directo de los datos ya verificados — por eso el 208 aparece correctamente como "mixta" en vez de "turbo" a secas.
 
 ## Estructura
 
@@ -17,9 +18,10 @@ index.html                      → página principal (fichas técnicas + miniju
 diagnostico-inteligente.html    → página del diagnóstico inteligente por síntomas
 motores.html                    → página de fundamentos de motores + corte interactivo + circuitos
 electricidad.html               → página de fundamentos de electricidad/electrónica + circuito Ohm + sensores + DTC
+combustible.html                → página de combustible + admisión/escape + turbo + emisiones
 style.css                       → estilos de todo el sitio
 data.js                         → datos técnicos de cada auto y sus fallas comunes (con explicaciones paso a paso)
-diagrams.js                     → definiciones y render de diagramas SVG interactivos (reutilizado por diagramas eléctricos, Motores y Electricidad)
+diagrams.js                     → definiciones y render de diagramas SVG interactivos (reutilizado por diagramas eléctricos, Motores, Electricidad y Combustible)
 app.js                          → lógica de fichas técnicas y minijuegos
 diag-data.js                    → árboles de decisión por síntoma
 diag-app.js                     → lógica del diagnóstico inteligente
@@ -27,17 +29,19 @@ motores-data.js                 → contenido conceptual y diagramas de la secci
 motores-app.js                  → lógica de render de la sección Motores
 electricidad-data.js            → contenido conceptual, circuito Ohm, sensores y DTC de la sección Electricidad
 electricidad-app.js             → lógica de render de la sección Electricidad
+combustible-data.js             → contenido conceptual y circuitos de la sección Combustible
+combustible-app.js              → lógica de render de la sección Combustible
 ```
 
 ## Cómo subirlo a GitHub
 
 1. Creá un repositorio nuevo en GitHub (por ejemplo `mecax`).
-2. Subí estos 14 archivos a la raíz del repositorio (podés arrastrarlos desde la web de GitHub en "Add file → Upload files", o por consola):
+2. Subí estos 16 archivos a la raíz del repositorio (podés arrastrarlos desde la web de GitHub en "Add file → Upload files", o por consola):
 
 ```bash
 git init
 git add .
-git commit -m "Manual de taller + diagnóstico inteligente + diagramas eléctricos + motores + electricidad"
+git commit -m "Manual de taller + diagnóstico inteligente + diagramas eléctricos + motores + electricidad + combustible"
 git branch -M main
 git remote add origin https://github.com/TU_USUARIO/mecax.git
 git push -u origin main
